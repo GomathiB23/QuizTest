@@ -1,0 +1,79 @@
+
+.ImageAlign {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px;
+    
+  }
+  
+  .story1 {
+width: 235px;
+height: 235px;
+top: 106px;
+left: 43px;
+gap: 0px;
+border: 5px 0px 0px 0px;
+opacity: 0px;
+margin-left: 43px;
+
+
+  }
+  
+  .story2 {
+    width: 235px;
+height: 235px;
+top: 106px;
+left: 43px;
+gap: 0px;
+border: 5px 0px 0px 0px;
+opacity: 0px;
+margin-left: 43px;
+
+  }
+  .story3 {
+    width: 235px;
+    height: 235px;
+    top: 106px;
+    left: 43px;
+    gap: 0px;
+    border: 5px 0px 0px 0px;
+    opacity: 0px;
+    margin-left: 43px;
+    
+  }
+  .story4 {
+    width: 235px;
+    height: 235px;
+    top: 106px;
+    left: 43px;
+    gap: 0px;
+    border: 5px 0px 0px 0px;
+    opacity: 0px;
+    margin-left: 43px;
+    
+  }
+  .story5 {
+    width: 235px;
+    height: 235px;
+    top: 106px;
+    left: 43px;
+    gap: 0px;
+    border: 5px 0px 0px 0px;
+    opacity: 0px;
+    margin-left: 43px;
+    
+  }
+  .image-text-container {
+    position: relative;
+  }
+  .text {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 700;
+  }
