@@ -1,17 +1,30 @@
 // App.js
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import RegisterNow from './Components/RegisterNow';
 import SignIn from './Components/SignIn';
 import ImageAlign from './Components/ImageAlign';
+import RegisterPopup from './Components/RegisterPopup';
 
 function App() {
+  
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  
+    const handleClick = () => {
+      setPopupOpen(true); // Set the state to open the popup
+    };
+    
+    const handleClose = () => {
+      setPopupOpen(false); // Set the state to close the popup
+    };
 
-  const handleClick = () => {
-    console.log('Button clicked!');
-  };
   const handleClick1 = () => {
     console.log('Button clicked!');
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    // Add your registration logic here
+    console.log('Register button clicked');
   };
 
   return (
@@ -21,7 +34,9 @@ function App() {
         <h1>SwipTory</h1>
         <button onClick={handleClick} className="button">
         Register Now
-        </button>
+      </button>
+      {isPopupOpen && <RegisterPopup />} {/* Render RegisterPopup if isPopupOpen is true */}
+   
         <button onClick={handleClick1} className="button1">
         SignIn
         </button>

@@ -1,0 +1,103 @@
+.register-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .register-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.898); /* Semi-transparent black overlay */
+    z-index: 1000; /* Ensure the overlay is above other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register-popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 300px;
+  }
+  
+  .register-popup-content h2 {
+    margin-top: 0;
+  }
+
+  input[type="text"], input[type="password"] {
+    width: 245px;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 30px;
+    margin-left:90px;
+
+  }
+
+ label
+ {
+    font-size: 20px;
+    font-weight: 700;
+ }
+  
+  button[type="submit"] {
+  width: 129px;
+  height: 45px;
+  background-color: #73ABFF;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 20px;
+  margin-top: -20px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 700;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  .popup
+  {
+    background-color: white;
+    width: 624px;
+    height: 482px;
+    top: 199px;
+    left: 349px;
+    gap: 0px;
+    border-radius: 20px;
+    opacity: 0px;
+  }
+  h2
+  {
+    font-weight: 50px;
+    margin-top:70px;
+  }
+ 
+  input
+  {
+    width: 245px;
+    height: 35px;
+  }
+  .cross
+  {
+    position: absolute;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left: 220px;
+  }
+ 
+  

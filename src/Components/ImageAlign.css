@@ -4,7 +4,9 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 30px;
-    
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
   }
   
   .story1 {
@@ -16,6 +18,8 @@ gap: 0px;
 border: 5px 0px 0px 0px;
 opacity: 0px;
 margin-left: 43px;
+object-fit: cover;
+
 
 
   }
@@ -29,6 +33,7 @@ gap: 0px;
 border: 5px 0px 0px 0px;
 opacity: 0px;
 margin-left: 43px;
+object-fit: cover;
 
   }
   .story3 {
@@ -40,6 +45,8 @@ margin-left: 43px;
     border: 5px 0px 0px 0px;
     opacity: 0px;
     margin-left: 43px;
+    object-fit: cover;
+    border-radius: 30px;
     
   }
   .story4 {
@@ -51,6 +58,7 @@ margin-left: 43px;
     border: 5px 0px 0px 0px;
     opacity: 0px;
     margin-left: 43px;
+    object-fit: cover;
     
   }
   .story5 {
@@ -62,10 +70,12 @@ margin-left: 43px;
     border: 5px 0px 0px 0px;
     opacity: 0px;
     margin-left: 43px;
-    
+    object-fit: cover;
   }
   .image-text-container {
     position: relative;
+    display: inline-block;
+    margin-right: 20px;
   }
   .text {
     position: absolute;
@@ -77,3 +87,38 @@ margin-left: 43px;
     text-align: center;
     font-weight: 700;
   }
+  .image-container {
+    display: inline-flex; /* Display images in a row */
+    padding-bottom: 20px; /* Add some spacing between images and bottom */
+  }
+  .ImageAlign::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .ImageAlign {
+    scrollbar-width: none; /* Firefox */
+  }
+  
+.scroll-icon {
+  position: absolute; /* Position the arrow button absolutely */
+  top: 155px;
+  right: 0px; /* Position the arrow button vertically in the middle */
+ /* Position the arrow button on the right side */
+  transform: translateY(-50%); /* Adjust vertical position to center */
+  cursor: pointer;
+  color: bisque;
+
+}
+
+.scroll-icon i {
+  font-size: 24px; /* Adjust arrow icon size as needed */
+}
+
+
+.scroll-icon.left {
+  left: 0; /* Position the left arrow on the left side */
+}
+
+.scroll-icon.right {
+  right: 0; /* Position the right arrow on the right side */
+}
