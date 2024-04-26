@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './RegisterPopup.css';
 import cross from '../Components/Assests/cross.jpg';
 
@@ -12,20 +12,21 @@ const RegisterPopup = ({ onClose }) => {
     console.log('Register button clicked');
     onClose(); // Close the popup after registration
   };
- 
- 
- const [showPopup, setShowPopup] = useState(true);
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
+  
+  const handleCloseClick = () => {
+    onClose();
   };
 
   return (
     <div className="register-popup-overlay">
-      <div className="register-popup">
+      <div className="register-popup" >
        
         <form onSubmit={handleSubmit} className='popup'>
-        <img src={cross} alt="cross" className="cross" onClose={handleClosePopup} />
+       
+        <button className="close-button" onClick={handleCloseClick}>
+        <img src={cross} alt="Close" />
+      </button>
+
         <h2>Register to SwipTory</h2>
           <div className='tags'>
           <label>Username</label>
