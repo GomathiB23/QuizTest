@@ -1,0 +1,13 @@
+.close-button {
+    position: absolute;
+    top: 270px;
+    right: 690px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .close-button img {
+    width: 30px;
+    height: 30px;
+  }
