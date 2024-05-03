@@ -1,10 +1,11 @@
 import React, { useState} from 'react';
 import './RegisterPopup.css';
 import cross from './Components/Assests/cross.jpg';
-
+import {useNavigate} from 'react-router-dom';
+import MainPage from './MainPage';
 
 const RegisterPopup = ({ onClose }) => {
-
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,13 +13,13 @@ const RegisterPopup = ({ onClose }) => {
     e.preventDefault();
     // Add your registration logic here
     console.log('Register button clicked');
-    onClose(); // Close the popup after registration
+    // Navigate to the main page after registration
+    navigate('/MainPage');
   };
   
   const handleCloseClick = () => {
     onClose();
   };
-
   return (
     <div className="register-popup-overlay">
       <div className="register-popup" >
@@ -51,7 +52,7 @@ const RegisterPopup = ({ onClose }) => {
           />
           </div>
           <br />
-          <button type="submit">Register</button>
+          <button type="submit" >Register</button>
         </form>
       </div>
     </div>

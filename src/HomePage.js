@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './HomePage.css';
 import ImageAlign from './ImageAlign';
 import RegisterPopup from './RegisterPopup';
 import LoginPopup from './LoginPopup';
-
+import './HomePage.css';
+ 
 
 function HomePage() {
     
