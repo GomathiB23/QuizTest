@@ -1,0 +1,33 @@
+.dashboard {
+  padding: 20px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.stat {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.stat span {
+  color: #ff5722;
+  font-size: 2em;
+}
+
+.trending-quizzes {
+  margin-top: 20px;
+}
+
+.quizzes-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+h2 {
+  text-align: center;
+}
