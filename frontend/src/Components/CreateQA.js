@@ -203,7 +203,7 @@ return (
                 onChange={(e) => handleOptionChange(e, index)}
               />
             )}
-            {questions[currentQuestion].type === 'text-image-url' && (
+            {/* {questions[currentQuestion].type === 'text-image-url' && (
               <>
                 <input
                   type="text"
@@ -218,7 +218,24 @@ return (
                   placeholder="Image URL"
                 />
               </>
-            )}
+            )} */}
+            {questions[currentQuestion].type === 'text-image-url' && (
+  <>
+    <input
+      type="text"
+      value={option.text}
+      onChange={(e) => handleOptionChange(e, index, 'text')}
+      placeholder="Text"
+    />
+    <input
+      type="url"
+      value={option.url}
+      onChange={(e) => handleOptionChange(e, index, 'url')}
+      placeholder="Image URL"
+    />
+  </>
+)}
+
             <input
               type="radio"
               name={`answer-${currentQuestion}`}
