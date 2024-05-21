@@ -1,0 +1,25 @@
+
+.score-container {
+    text-align: center;
+  }
+  
+  .card-title {
+    width: 824px;
+    height: 60px;
+    top: 185px;
+    left: 228px;
+    gap: 0px;
+    opacity: 0px;
+    font-size: 50px;
+    color: #474444;
+    margin-left: 530px;
+    margin-top: 50px;
+  }
+  
+  .card-text {
+    font-size: 50px;
+    color: #474444;
+    margin-left: 10px;
+    margin-top: 50px;
+  }
+  
