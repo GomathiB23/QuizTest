@@ -236,9 +236,11 @@ return (
       </div>
       <div className="timer">
         <label>Timer</label>
-        <button onClick={handleTimerOff}>OFF</button>
-        <button onClick={handleTimer5Sec}>5 sec</button>
-        <button onClick={handleTimer10Sec}>10 sec</button>
+        <button className={timer === null ? 'active' : ''} onClick={handleTimerOff}>OFF</button>
+
+<button className={timer === 5 ? 'active' : ''} onClick={handleTimer5Sec}>5 sec</button>
+<button className={timer === 10 ? 'active' : ''} onClick={handleTimer10Sec}>10 sec</button>
+
       </div>
     </div>
     <div className="quiz-footer">
