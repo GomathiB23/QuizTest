@@ -57,7 +57,7 @@
     position: absolute;
     height: 100px;
     top: 136px;
-    left: 547px;
+    left: 447px;
     color: #474444;
     font-family: Jomhuria, var(--default-font-family);
     font-size: 100px;
@@ -90,8 +90,21 @@
     position: absolute;
     width: 217px;
     height: 37px;
-    top: 0;
-    left: 193px;
+    top: 25px;
+    left: -83px;
+    cursor: pointer;
+    font-size: 0px;
+    background: transparent;
+    border: none;
+    z-index: 6;
+    border-radius: 10px;
+  }
+  .button1 {
+    position: absolute;
+    width: 217px;
+    height: 37px;
+    top: 30px;
+    left: 263px;
     cursor: pointer;
     font-size: 0px;
     background: transparent;
@@ -103,7 +116,7 @@
     display: block;
     position: relative;
     height: 30px;
-    margin: 4px 0 0 78px;
+    margin: -3px 0 0 -290px;
     color: #474343;
     font-family: Poppins, var(--default-font-family);
     font-size: 20px;
@@ -145,7 +158,7 @@
     position: absolute;
     width: 518px;
     height: 107px;
-    top: 387px;
+    top: 407px;
     left: 372px;
     z-index: 10;
   }
@@ -178,10 +191,10 @@
     width: 388px;
     height: 38px;
     top: 0;
-    left: 88px;
+    left: 170px;
     background: #f3f3f3;
     z-index: 13;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 10px 10px;
   }
   .flex-row-a {
     display: flex;
@@ -213,7 +226,7 @@
     height: 38px;
     background: #f3f3f3;
     z-index: 14;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 10px 10px;
   }
   .rectangle-8 {
     position: absolute;
@@ -233,8 +246,8 @@
     justify-content: flex-start;
     position: absolute;
     height: 30px;
-    top: 557px;
-    left: 589px;
+    top: 4px;
+    left: 103px;
     color: #474343;
     font-family: Poppins, var(--default-font-family);
     font-size: 20px;
@@ -244,4 +257,3 @@
     white-space: nowrap;
     z-index: 16;
   }
-  

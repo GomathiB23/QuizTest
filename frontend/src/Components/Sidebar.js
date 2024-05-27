@@ -1,58 +1,7 @@
-// // import React, { useState } from 'react';
-// // import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
-
-// // const Sidebar = () => {
-// //     const navigate = useNavigate(); // Replace useHistory with useNavigate
-// //     const [activeNavItem, setActiveNavItem] = useState(null);
-
-// //     const handleNavItemClick = (item) => {
-// //         setActiveNavItem(item);
-// //         switch (item) {
-// //             case 'dashboard':
-// //                 navigate('/dashboard'); // Use navigate instead of history.push
-// //                 break;
-// //             case 'analytics':
-// //                 navigate('/analytics');
-// //                 break;
-// //             case 'createQuiz':
-// //                 navigate('/create-quiz');
-// //                 break;
-// //             default:
-// //                 break;
-// //         }
-// //     };
-
-// //     return (
-// //         <div style={{ width: '193px', height: '832px', backgroundColor: '#474444', position: 'relative' }}>
-// //             <div style={{ width: '131px', height: '70px', position: 'absolute', top: '17px', left: '31px', gap: '0px', opacity: '1', fontFamily: 'Jomhuria', fontSize: '70px', fontWeight: '400', lineHeight: '70px', textAlign: 'left', background: '#474444', color: 'white' }}>
-// //                 QUIZZIE
-// //             </div>
-// //             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', paddingTop: '70px' }}>
-// //                 <NavItem onClick={() => handleNavItemClick('dashboard')} active={activeNavItem === 'dashboard'}>DASHBOARD</NavItem>
-// //                 <NavItem onClick={() => handleNavItemClick('analytics')} active={activeNavItem === 'analytics'}>ANALYTICS</NavItem>
-// //                 <NavItem onClick={() => handleNavItemClick('createQuiz')} active={activeNavItem === 'createQuiz'}>CREATE QUIZ</NavItem>
-// //                 <div style={{ width: '100%', height: '1px', backgroundColor: 'white' }}></div>
-// //                 <button style={{ width: '100%', height: '40px', backgroundColor: '#474444', color: 'white', border: 'none', outline: 'none', cursor: 'pointer' }}>Logout</button>
-// //             </div>
-// //         </div>
-// //     );
-// // };
-
-// // const NavItem = ({ children, onClick, active }) => {
-// //     return (
-// //         <div onClick={onClick} style={{ width: '176px', height: '210px', padding: '20px', borderLeft: active ? '5px solid white' : 'none', backgroundColor: active ? 'rgba(255, 255, 255, 0.1)' : 'transparent', cursor: 'pointer' }}>
-// //             {children}
-// //         </div>
-// //     );
-// // };
-
-// // export default Sidebar;
-
-
 // import React, { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
-
-// import '../Styles/Quiz.css';
+// import CreateQuiz from './CreateQuiz'; // Import the Popup component
+// import './Sidebar.css'; // Import the sidebar styles
 
 // const Sidebar = () => {
 //     const navigate = useNavigate();
@@ -81,8 +30,7 @@
 //             <div className="nav-items">
 //                 <NavItem onClick={() => handleNavItemClick('dashboard')} active={activeNavItem === 'dashboard'}>DASHBOARD</NavItem>
 //                 <NavItem onClick={() => handleNavItemClick('analytics')} active={activeNavItem === 'analytics'}>ANALYTICS</NavItem>
-//                 {/* <NavItem onClick={() => handleNavItemClick('createQuiz')} active={activeNavItem === 'createQuiz'}>CREATE QUIZ</NavItem> */}
-//                 <NavItem onClick={handleCreateQuiz} active={activeNavItem === 'createQuiz'}>CREATE QUIZ</NavItem>
+//                 <PopupButton />
 //                 <div className="divider"></div>
 //                 <button className="logout-btn">LOGOUT</button>
 //             </div>
@@ -98,76 +46,126 @@
 //     );
 // };
 
+// const PopupButton = () => {
+//     const [isPopupOpen, setPopupOpen] = useState(false);
+
+//     const openPopup = () => {
+//         setPopupOpen(true);
+//         document.body.classList.add('blur-background');
+//     };
+
+//     const closePopup = () => {
+//         setPopupOpen(false);
+//         document.body.classList.remove('blur-background');
+//     };
+
+//     return (
+//         <div>
+//             <div onClick={openPopup} className="nav-item">
+//                 CREATE QUIZ
+//             </div>
+//             {isPopupOpen && <CreateQuiz handleClose={closePopup} />}
+//         </div>
+//     );
+// };
+
 // export default Sidebar;
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import CreateQuiz from './CreateQuiz'; // Import the Popup component
-import './Sidebar.css'; // Import the sidebar styles
+import { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import styles from "./SignIn.css";
 
-const Sidebar = () => {
-    const navigate = useNavigate();
-    const [activeNavItem, setActiveNavItem] = useState(null);
+const Signup = () => {
+	const [data, setData] = useState({
+		firstName: "",
+		lastName: "",
+		email: "",
+		password: "",
+	});
+	const [error, setError] = useState("");
+	const navigate = useNavigate();
 
-    const handleNavItemClick = (item) => {
-        setActiveNavItem(item);
-        switch (item) {
-            case 'dashboard':
-                navigate('/dashboard');
-                break;
-            case 'analytics':
-                navigate('/analytics');
-                break;
-            case 'createQuiz':
-                navigate('/createquiz');
-                break;
-            default:
-                break;
-        }
-    };
+	const handleChange = ({ currentTarget: input }) => {
+		setData({ ...data, [input.name]: input.value });
+	};
 
-    return (
-        <div className="sidebar-container">
-            <div className="brand">QUIZZIE</div>
-            <div className="nav-items">
-                <NavItem onClick={() => handleNavItemClick('dashboard')} active={activeNavItem === 'dashboard'}>DASHBOARD</NavItem>
-                <NavItem onClick={() => handleNavItemClick('analytics')} active={activeNavItem === 'analytics'}>ANALYTICS</NavItem>
-                <PopupButton />
-                <div className="divider"></div>
-                <button className="logout-btn">LOGOUT</button>
-            </div>
-        </div>
-    );
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const url = "http://localhost:8080/api/users";
+			const { data: res } = await axios.post(url, data);
+			navigate("/login");
+			console.log(res.message);
+		} catch (error) {
+			if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				setError(error.response.data.message);
+			}
+		}
+	};
+
+	return (
+		<div className={styles.signup_container}>
+			<div className={styles.signup_form_container}>
+				<div className={styles.left}>
+					<h1>Welcome Back</h1>
+					<Link to="/login">
+						<button type="button" className={styles.white_btn}>
+							Sing in
+						</button>
+					</Link>
+				</div>
+				<div className={styles.right}>
+					<form className={styles.form_container} onSubmit={handleSubmit}>
+						<h1>Create Account</h1>
+						<input
+							type="text"
+							placeholder="First Name"
+							name="firstName"
+							onChange={handleChange}
+							value={data.firstName}
+							required
+							className={styles.input}
+						/>
+						<input
+							type="text"
+							placeholder="Last Name"
+							name="lastName"
+							onChange={handleChange}
+							value={data.lastName}
+							required
+							className={styles.input}
+						/>
+						<input
+							type="email"
+							placeholder="Email"
+							name="email"
+							onChange={handleChange}
+							value={data.email}
+							required
+							className={styles.input}
+						/>
+						<input
+							type="password"
+							placeholder="Password"
+							name="password"
+							onChange={handleChange}
+							value={data.password}
+							required
+							className={styles.input}
+						/>
+						{error && <div className={styles.error_msg}>{error}</div>}
+						<button type="submit" className={styles.green_btn}>
+							Sing Up
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	);
 };
 
-const NavItem = ({ children, onClick, active }) => {
-    return (
-        <div onClick={onClick} className={`nav-item ${active ? 'active' : ''}`}>
-            {children}
-        </div>
-    );
-};
-
-const PopupButton = () => {
-    const [isPopupOpen, setPopupOpen] = useState(false);
-
-    const openPopup = () => {
-        setPopupOpen(true);
-        document.body.classList.add('blur-background');
-    };
-
-    const closePopup = () => {
-        setPopupOpen(false);
-        document.body.classList.remove('blur-background');
-    };
-
-    return (
-        <div>
-            <div onClick={openPopup} className="nav-item">
-                CREATE QUIZ
-            </div>
-            {isPopupOpen && <CreateQuiz handleClose={closePopup} />}
-        </div>
-    );
-};
-
-export default Sidebar;
+export default Signup;
