@@ -154,15 +154,15 @@
     white-space: nowrap;
     z-index: 5;
   }
-  .group-5 {
+  .group-5a {
     position: absolute;
     width: 518px;
     height: 107px;
-    top: 407px;
+    top: 397px;
     left: 372px;
     z-index: 10;
   }
-  .flex-row {
+  .flex-row-b {
     position: relative;
     width: 476px;
     height: 38px;
@@ -176,7 +176,7 @@
     position: absolute;
     height: 30px;
     top: 0;
-    left: 0;
+    left: 70px;
     color: #474343;
     font-family: Poppins, var(--default-font-family);
     font-size: 20px;
@@ -203,10 +203,21 @@
     position: relative;
     width: 518px;
     height: 38px;
-    margin: 31px 0 0 0;
-    z-index: 14;
+    margin-right: 10px;
   }
-  .password {
+  .flex-row-b {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 518px;
+    height: 38px;
+    margin-left: -46px;
+    margin-right: 60px;
+    margin-top: 20px;
+    
+  }
+  .password-1 {
     flex-shrink: 0;
     position: relative;
     height: 30px;
@@ -217,6 +228,7 @@
     line-height: 30px;
     text-align: left;
     white-space: nowrap;
+    left:82px;
     z-index: 12;
   }
   .rectangle-7 {
