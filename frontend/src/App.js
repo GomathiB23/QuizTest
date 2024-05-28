@@ -56,13 +56,8 @@
 //with backend
 
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-  Outlet,
-} from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import SignIn from "./Components/SignIn";
 import LogIn from "./Components/LogIn";
@@ -76,20 +71,23 @@ import Questions from "./Components/Questions";
 import Score from "./Components/Score";
 import QuestionBank from "./Components/QuestionBank";
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
     <div className="app">
       <Sidebar />
-      <div className="content">
-        <Outlet />
-      </div>
+      <div className="content">{children}</div>
     </div>
   );
 };
 
 const PrivateRoute = ({ children }) => {
-  const isAuthenticated = !!localStorage.getItem('token');
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  const isAuthenticated = !!localStorage.getItem("token");
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  return children;
 };
 
 const App = () => {
@@ -98,25 +96,23 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SignIn />} />
         <Route path="/login" element={<LogIn />} />
-        <Route path="/sidebar" element={
-          <PrivateRoute>
-            <Sidebar />
-          </PrivateRoute>
-        }/>
-        <Route element={
-          <PrivateRoute>
-            <Layout />
-          </PrivateRoute>
-        }>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/createqa" element={<CreateQA />} />
-          <Route path="/createquiz" element={<CreateQuiz />} />
-          <Route path="/quiz" element={<Quiz />} />
-          <Route path="/questions" element={<Questions />} />
-          <Route path="/questionbank" element={<QuestionBank />} />
-          <Route path="/score" element={<Score />} />
-        </Route>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Layout>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/createqa" element={<CreateQA />} />
+                <Route path="/createquiz" element={<CreateQuiz />} />
+                <Route path="/quiz" element={<Quiz />} />
+                <Route path="/questions" element={<Questions />} />
+                <Route path="/questionbank" element={<QuestionBank />} />
+                <Route path="/score" element={<Score />} />
+              </Layout>
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
