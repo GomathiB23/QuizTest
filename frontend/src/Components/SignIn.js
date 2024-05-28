@@ -122,7 +122,7 @@ const SignIn = () => {
           {error && <div className={styles.error_msg}>{error}</div>}
           <br />
           <Link to='/login'>
-		  <button type="submit" className="rectangle-signup">
+		  <button type="submit" className="rectangle-signup" onSubmit={handleSubmit}>
             <span className="log-in-90">Sign Up</span>
           </button>
 		  </Link>
