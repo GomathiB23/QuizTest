@@ -1,4 +1,3 @@
-/* App.css */
 
 .app {
   margin: 0;
@@ -8,8 +7,8 @@
 }
 
 .sidebar {
-  width: 200px; /* Adjust width as needed */
-  background-color: #f0f0f0; /* Sidebar background color */
+  width: 200px; 
+  background-color: #833131; 
   padding: 20px;
   position: fixed;
   left: 0;
@@ -21,5 +20,5 @@
   flex: 1;
   padding: 10px;
   margin-left: 0px;
-  margin-top: 0px; /* Adjust margin to leave space for the sidebar */
+  margin-top: 0px; 
 }
