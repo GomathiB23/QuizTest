@@ -208,6 +208,7 @@
    */
 
 
+
    .create-quiz-container {
     width: 500px;
     background: white;
@@ -418,4 +419,8 @@
     padding: 5px 10px;
     border-radius: 4px;
     font-size: 14px;
+  }
+
+  .max-text{
+    color: #9F9F9F;
   }
