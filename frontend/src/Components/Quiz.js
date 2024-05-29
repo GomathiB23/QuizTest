@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Quiz.css';
 
 function Quiz() {
+  
+
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -9,24 +12,41 @@ function Quiz() {
   const [timer, setTimer] = useState(null); // State for timer
   const [timerRunning, setTimerRunning] = useState(false); // State to track timer running
 
+  // useEffect(() => {
+  //   // Fetch quiz data from backend or local storage
+  //   const fetchedQuestions = [
+  //     {
+  //       text: 'Your question text comes here, its a sample text.',
+  //       options: [
+  //         { text: 'Option 1', url: '' }, 
+  //         { text: 'Option 1', url: '' }, 
+  //         { text: 'Option 1', url: '' }, 
+  //         { text: 'Option 1', url: '' }
+  //       ],
+  //       type: 'text',
+  //       timer: 10 // Replace with actual timer value from backend
+  //     },
+  //     // Add more questions here
+  //   ];
+  //   setQuestions(fetchedQuestions);
+  // }, []);
+
   useEffect(() => {
-    // Fetch quiz data from backend or local storage
-    const fetchedQuestions = [
-      {
-        text: 'Your question text comes here, its a sample text.',
-        options: [
-          { text: 'Option 1', url: '' }, 
-          { text: 'Option 1', url: '' }, 
-          { text: 'Option 1', url: '' }, 
-          { text: 'Option 1', url: '' }
-        ],
-        type: 'text',
-        timer: 10 // Replace with actual timer value from backend
-      },
-      // Add more questions here
-    ];
-    setQuestions(fetchedQuestions);
+    const fetchQuiz = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/quiz/quizId'); // Replace 'quizId' with the actual quiz ID
+        setQuestions(response.data.questions);
+        // Set the timer for the first question
+        setTimer(response.data.questions[0]?.timer || null);
+      } catch (error) {
+        console.error('Error fetching quiz:', error);
+      }
+    };
+  
+    fetchQuiz();
   }, []);
+  
+
 
   useEffect(() => {
     if (timerRunning) {

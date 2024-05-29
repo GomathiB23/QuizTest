@@ -1,10 +1,21 @@
 const mongoose = require('mongoose');
 
-const quizSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  questionsCount: { type: Number, required: true },
-  createdAt: { type: Date, default: Date.now },
-  impressions: { type: Number, default: 0 },
+const optionSchema = new mongoose.Schema({
+  text: String,
+  url: String,
 });
 
-module.exports = mongoose.model('Quiz', quizSchema);
+const questionSchema = new mongoose.Schema({
+  text: String,
+  options: [optionSchema],
+  type: String,
+  timer: Number,
+});
+
+const quizSchema = new mongoose.Schema({
+  questions: [questionSchema],
+});
+
+const Quiz = mongoose.model('Quiz', quizSchema);
+
+module.exports = Quiz;

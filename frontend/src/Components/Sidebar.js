@@ -19,6 +19,8 @@ const Sidebar = () => {
             case 'createQuiz':
                 navigate('/createquiz');
                 break;
+            case 'logout':
+                navigate('/login');
             default:
                 break;
         }
@@ -32,7 +34,7 @@ const Sidebar = () => {
                 <NavItem onClick={() => handleNavItemClick('analytics')} active={activeNavItem === 'analytics'}>ANALYTICS</NavItem>
                 <PopupButton />
                 <div className="divider"></div>
-                <button className="logout-btn">LOGOUT</button>
+                <button className="logout-btn" onClick={() => handleNavItemClick('logout')}>LOGOUT</button>
             </div>
         </div>
     );
@@ -70,6 +72,8 @@ const PopupButton = () => {
 };
 
 export default Sidebar;
+
+
 // import { useState } from "react";
 // import axios from "axios";
 // import { Link, useNavigate } from "react-router-dom";
