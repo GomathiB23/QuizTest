@@ -342,8 +342,8 @@ function CreateQA() {
   const handleCreateQuiz = async () => {
     try {
      
-  
-      const response = await axios.post('http://localhost:8080/api/quiz', { questions });
+      const data = await questions.json();
+      const response = await axios.post('http://localhost:8080/api/quiz', { data });
       
       if (response.status === 201) {
         setIsModalOpen(true);
