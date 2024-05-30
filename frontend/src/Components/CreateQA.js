@@ -274,7 +274,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function CreateQA() {
-  const [questions, setQuestions] = useState([{ text: '', options: [{ text: '', url: '' }], type: 'text' }]);
+  const [questions, setQuestions] = useState([
+    { text: '', options: [{ text: '' }], type: 'text', timer: null }
+  ]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLinkCopied, setIsLinkCopied] = useState(false);
@@ -295,13 +297,9 @@ function CreateQA() {
     setQuestions(newQuestions);
   };
 
-  const handleOptionChange = (e, index, type) => {
+  const handleOptionChange = (e, index) => {
     const newQuestions = [...questions];
-    if (type === 'text') {
-      newQuestions[currentQuestion].options[index].text = e.target.value;
-    } else if (type === 'url') {
-      newQuestions[currentQuestion].options[index].url = e.target.value;
-    }
+    newQuestions[currentQuestion].options[index].text = e.target.value;
     setQuestions(newQuestions);
   };
 
@@ -330,16 +328,35 @@ function CreateQA() {
     setCurrentQuestion(Math.max(0, currentQuestion - 1));
   };
 
-  const handleCreateQuiz = async ()  => {
+  // const handleCreateQuiz = async ()  => {
+  //   try {
+  //     const response = await axios.post('http://localhost:8080/api/quiz', { questions });
+  //     if (response.status === 201) {
+  //       setIsModalOpen(true);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error creating quiz:', error);
+  //   }
+  // };
+
+  const handleCreateQuiz = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/quiz', { questions });
+     
+  
+      const response = await axios.post('http://localhost:8080/api/quiz', { questions });
+      
       if (response.status === 201) {
         setIsModalOpen(true);
+      } else {
+        throw new Error('Failed to create quiz. Please try again later.');
       }
     } catch (error) {
       console.error('Error creating quiz:', error);
+      // Show frontend error notification
+      alert("Enter atleast one question !!");
     }
   };
+  
 
   const handleCloseModal = () => {
     setIsModalOpen(false);

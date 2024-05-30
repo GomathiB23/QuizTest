@@ -34,32 +34,38 @@ function Quiz() {
   useEffect(() => {
     const fetchQuiz = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/quiz/quizId'); // Replace 'quizId' with the actual quiz ID
-        setQuestions(response.data.questions);
-        // Set the timer for the first question
-        setTimer(response.data.questions[0]?.timer || null);
+        const response = await axios.get('http://localhost:8080/api/quiz');
+        const data = await response.json(); // Convert response to JSON
+        if (data.length > 0) {
+          setQuestions(data[0].questions); // Assuming you want to load the first quiz
+          setTimer(data[0].questions[0]?.timer || null);
+        }  
       } catch (error) {
         console.error('Error fetching quiz:', error);
       }
     };
   
-    fetchQuiz();
+    fetchQuiz(); // Call the fetchQuiz function
   }, []);
   
-
-
   useEffect(() => {
-    if (timerRunning) {
+    if (timerRunning && timer > 0) {
       const interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1);
+        setTimer(prevTimer => prevTimer - 1);
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [timerRunning]);
+  }, [timerRunning, timer]);
 
   const handleOptionSelection = (index) => {
     setSelectedAnswers([...selectedAnswers, index]);
-    setCurrentQuestion((prevQuestion) => prevQuestion + 1);
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      setTimer(questions[currentQuestion + 1].timer);
+      setTimerRunning(false);
+    } else {
+      setShowResults(true);
+    }
   };
 
   const handleNextQuestion = () => {

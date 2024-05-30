@@ -24,7 +24,6 @@
 
 require('dotenv').config();
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const connection = require('./db');
 const userRoutes = require('./routes/users');
@@ -32,6 +31,9 @@ const authRoutes = require('./routes/auth');
 const quizRoutes = require('./routes/quiz'); // Import the quiz routes
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
+
+const app = express();
 
 // Database connection
 connection();

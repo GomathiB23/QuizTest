@@ -49,15 +49,15 @@ app.get('/seed', async (req, res) => {
   }
 });
 
-// Routes
-app.get('/quizzes', async (req, res) => {
-  try {
-    const quizzes = await Quiz.find();
-    res.json(quizzes);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
+// // Routes
+// app.get('/quizzes', async (req, res) => {
+//   try {
+//     const quizzes = await Quiz.find();
+//     res.json(quizzes);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
 
 // Start server
 const PORT = process.env.PORT || 5000;
