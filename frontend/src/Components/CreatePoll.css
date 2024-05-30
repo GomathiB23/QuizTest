@@ -1,213 +1,65 @@
+.create-poll-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
 
+.poll-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
 
-.create-quiz-container {
-    width: 500px;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000; /* Ensure it appears above other content */
-  }
-  
-  .quiz-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .question-tab, .add-question-tab, .remove-question-tab {
-    width: 30px;
-    height: 30px;
-    background: #f0f0f0;
-    border: none;
-    border-radius: 50%;
-    margin: 0 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .question-tab.active, .add-question-tab:hover, .remove-question-tab:hover {
-    background: #007bff;
-    color: white;
-  }
-  
-  .quiz-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .poll-question {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .option-type {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .option-type label {
-    cursor: pointer;
-  }
-  
-  .options {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .option {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .option input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .delete-option {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: red;
-    font-size: 20px;
-    margin-left: 10px;
-  }
-  
-  .add-option {
-    width: 100%;
-    padding: 10px;
-    border: 1px dashed #007bff;
-    border-radius: 4px;
-    background: none;
-    cursor: pointer;
-    color: #007bff;
-  }
-  
-  .timer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin: 20px 0;
-  }
-  
-  .timer label {
-    flex: 1;
-  }
-  
-  .timer button {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background: #f0f0f0;
-    cursor: pointer;
-    flex: 1;
-    margin: 0 5px;
-  }
-  
-  .timer button.active {
-    background: #ff4d4d;
-    color: white;
-  }
-  
-  .quiz-footer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  .cancel-button, .create-quiz-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .cancel-button {
-    background: #ccc;
-  }
-  
-  .create-quiz-button {
-    background: #28a745;
-    color: white;
-  }
-  
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    width: 300px;
-    text-align: center;
-  }
-  
- 
-  .close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .share-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .link-copied-notification {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .link-copied-notification span {
-    background: #e8f5e9;
-    color: #4caf50;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 14px;
-  }
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.option-type {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}

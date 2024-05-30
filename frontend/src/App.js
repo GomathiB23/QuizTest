@@ -12,6 +12,7 @@ import CreateQuiz from "./Components/CreateQuiz";
 import Questions from "./Components/Questions";
 import Score from "./Components/Score";
 import QuestionBank from "./Components/QuestionBank";
+import CreatePoll from "./Components/CreatePoll";
 
 const Layout = ({ children }) => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
             <Route path="/analytics" element={<Layout><Analytics /></Layout>} />
             <Route path="/createqa" element={<Layout><CreateQA /></Layout>} />
+            <Route path="/createpoll" element={<Layout><CreatePoll /></Layout>} />
             <Route path="/createquiz" element={<Layout><CreateQuiz /></Layout>} />
             <Route path="/quiz" element={<Layout><Quiz /></Layout>} />
             <Route path="/questions" element={<Layout><Questions /></Layout>} />
