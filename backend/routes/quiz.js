@@ -30,7 +30,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Quiz = require('../models/quiz');
+const Quiz = require('../models/Quiz1');
 
 // Route to create a new quiz
 router.post('/', async (req, res) => {
