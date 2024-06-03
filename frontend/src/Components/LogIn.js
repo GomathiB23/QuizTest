@@ -107,7 +107,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const url = "http://localhost:8080/api/auth";
+      const url = "https://quiz6.onrender.com/";
       const response = await fetch(url, {
         method: "POST",
         headers: {
