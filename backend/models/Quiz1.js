@@ -34,6 +34,7 @@ const questionSchema = new mongoose.Schema({
 });
 
 const quizSchema = new mongoose.Schema({
+  title: String,
   questions: [questionSchema]
 });
 
