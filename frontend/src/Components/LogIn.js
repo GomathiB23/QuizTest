@@ -107,7 +107,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const url = "https://quiz6.onrender.com/";
+      const url = "https://gomathi.onrender.com/";
       const response = await fetch(url, {
         method: "POST",
         headers: {
