@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './SignIn.css';
-const url = "https://gomathi.onrender.com/";
+const url = "https://quizzie.onrender.com/";
 
 const SignIn = () => {
   const [data, setData] = useState({ name: '', email: '', password: '', confirmPassword: '' });
